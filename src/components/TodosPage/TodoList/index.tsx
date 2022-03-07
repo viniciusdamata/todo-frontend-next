@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ListAllTodosUseCase, Todo } from "../../../domain";
+import Layout from "../../Layout";
 import { TodoCard } from "../TodoCard";
 interface ITodoListProps {
   listAllTodosUseCase: ListAllTodosUseCase;
@@ -14,12 +15,14 @@ const TodoList = ({ listAllTodosUseCase }: ITodoListProps) => {
     })();
   }, [listAllTodosUseCase]);
 
-  return <>
-      <div>
-      {todos.map((todo) => (
-        <TodoCard key={todo.title} {...todo} />
-      ))}
-    </div>
-  </>;
+  return (
+    <>
+      <Layout>
+        {todos.map((todo) => (
+          <TodoCard key={todo.title} {...todo} />
+        ))}
+      </Layout>
+    </>
+  );
 };
 export default TodoList;
