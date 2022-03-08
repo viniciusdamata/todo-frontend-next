@@ -18,11 +18,16 @@ const TodoList = ({ listAllTodosUseCase }: ITodoListProps) => {
   return (
     <>
       <Layout>
-        {todos.map((todo) => (
-          <TodoCard key={todo.title} {...todo} />
-        ))}
+        <div>
+          {todos.map((todo) => (
+            <TodoCard {...todo} key={todo.title} />
+          ))}
+        </div>
       </Layout>
     </>
   );
 };
+
+
+
 export default TodoList;

@@ -1,5 +1,14 @@
 .root {
-  border: 1px solid red;
-  border-radius: .5rem;
+  border: 1px solid #e5d3d38c;
+  border-radius: 0.5rem;
   padding: 2rem;
+//   & > h1 {
+//     filter: invert(1);
+//     mix-blend-mode: difference;
+//   }
+//   & > p {
+//     filter: invert(1);
+//     mix-blend-mode: difference;
+//   }
+  margin-bottom: 1rem;
 }
