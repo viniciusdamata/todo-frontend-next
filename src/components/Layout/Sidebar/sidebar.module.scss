@@ -1,7 +1,7 @@
 .sidebar {
   transform: translateX(-20vw);
   background: #202020;
-  width: 20vw;
+  width: 15%;
   box-shadow: 0px 0px 10px -3px rgb(0 0 0 / 50%);
   @media (max-width: 800px) {
     width: 80vw;
@@ -23,7 +23,8 @@
   transform: translateX(0vw);
 
   &-sidebar-open {
-    transform: translateX(20vw);
+    transform: translateX(22%);
+    width: 80vw;
     @media (max-width: 800px) {
       transform: translateX(0vw);
     }

@@ -1,14 +1,21 @@
-.root {
+.todo-card {
   border: 1px solid #e5d3d38c;
   border-radius: 0.5rem;
   padding: 2rem;
-//   & > h1 {
-//     filter: invert(1);
-//     mix-blend-mode: difference;
-//   }
-//   & > p {
-//     filter: invert(1);
-//     mix-blend-mode: difference;
-//   }
-  margin-bottom: 1rem;
+  max-height: 20rem;
+
+  & > span > p {
+    height: 10rem;
+    text-overflow: clip;
+    overflow: hidden;
+  }
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: calc(calc(600px - 100%) * 999);
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
 }

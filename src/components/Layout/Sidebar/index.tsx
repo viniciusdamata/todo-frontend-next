@@ -2,6 +2,8 @@ import clsx from "clsx";
 import React, { PropsWithChildren, useContext, useMemo } from "react";
 import { SidebarContext } from "../../../context/sidebar";
 import styles from "./sidebar.module.scss";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import Link from "next/link";
 
 const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   const { open } = useContext(SidebarContext);
@@ -9,6 +11,7 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   interface IMenu {
     name: string;
     link: string;
+    Icon: () => JSX.Element;
   }
 
   const menus: IMenu[] = useMemo<IMenu[]>(
@@ -16,6 +19,7 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
       {
         link: "/archived",
         name: "Arquivados",
+        Icon: () => <ArchiveIcon style={{ color: "#fff" }} />,
       },
     ],
     []
@@ -26,11 +30,18 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
       <aside
         className={clsx(styles["sidebar"], { [styles["sidebar-open"]]: open })}
       >
-        <div style={{
-            top: 300
-        }}>
-          {menus.map((menu) => (
-            <span>{menu.name}</span>
+        <div
+          style={{
+            marginTop: "6rem",
+          }}
+        >
+          {menus.map(({ name, link, Icon }) => (
+            <Link href={link} passHref key={name}>
+              <span style={{ display: "flex", fontWeight: 500 }}>
+                <p style={{ color: "#fff" }}>{name}</p>
+                <Icon />
+              </span>
+            </Link>
           ))}
         </div>
       </aside>

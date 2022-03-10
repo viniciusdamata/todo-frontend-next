@@ -5,7 +5,10 @@ interface SidebarContextProps {
   toggleSidebar: () => void;
 }
 
-export const SidebarContext = createContext<SidebarContextProps>(null);
+export const SidebarContext = createContext<SidebarContextProps>({
+  open: false,
+  toggleSidebar: () => {},
+});
 
 export const SidebarContextProvider = ({ children }: PropsWithChildren<{}>) => {
   const [open, setOpen] = useState<boolean>(false);
