@@ -1,12 +1,12 @@
-import { Todo } from "../../../domain/entities/todo";
-import styles from "./todoCard.module.scss";
 import Link from "next/link";
-import { IconButton } from "@mui/material";
+import { useMemo } from "react";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { IconButton } from "@mui/material";
 import tinyColor from "tinycolor2";
-import { useMemo } from "react";
+import styles from "./todoCard.module.scss";
+import { Todo } from "@/domain/entities/todo";
 
 export const TodoCard = ({ archived, backgroundColor, body, title }: Todo) => {
   const textColor = useMemo(

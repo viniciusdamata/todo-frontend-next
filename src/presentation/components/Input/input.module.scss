@@ -1,0 +1,12 @@
+.form {
+  &-control {
+    &-error {
+      border: 1px solid #a72521;
+    }
+  }
+  &-text {
+    &-error {
+      color: #a72521;
+    }
+  }
+}

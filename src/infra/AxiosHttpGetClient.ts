@@ -1,4 +1,4 @@
-import { HTTPGet } from "../data/protocols/httpGetClient";
+import { HTTPGet } from "@/data/protocols/httpGetClient";
 import axios from "axios";
 export class AxiosHttpGetClient implements HTTPGet.Client {
   constructor(private url: string) {}

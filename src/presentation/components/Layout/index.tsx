@@ -1,9 +1,7 @@
 import React, { PropsWithChildren } from "react";
-import { SidebarContextProvider } from "../../context/sidebar";
+import { SidebarContextProvider } from "@/presentation/context/sidebar";
 import Appbar from "./Appbar";
 import Sidebar from "./Sidebar";
-import { IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 
 interface ILayoutProps {}
 const Layout = ({ children }: PropsWithChildren<ILayoutProps>) => {

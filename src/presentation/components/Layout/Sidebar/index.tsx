@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import React, { PropsWithChildren, useContext, useMemo } from "react";
-import { SidebarContext } from "../../../context/sidebar";
-import styles from "./sidebar.module.scss";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import Link from "next/link";
+import { SidebarContext } from "@/presentation/context/sidebar";
+import styles from "./sidebar.module.scss";
 
 const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   const { open } = useContext(SidebarContext);

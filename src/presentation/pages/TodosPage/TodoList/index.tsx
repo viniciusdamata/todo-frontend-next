@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { ListAllTodosUseCase, Todo } from "../../../domain";
-import Layout from "../../Layout";
+import { ListAllTodosUseCase, Todo } from "@/domain";
+import Layout from "@/presentation/components/Layout";
 import { TodoCard } from "../TodoCard";
 import styles from "./todoList.module.scss";
+import Button from "react-bootstrap/Button";
+import { Input } from "@/presentation/components/Input/Input";
+
 interface ITodoListProps {
   listAllTodosUseCase: ListAllTodosUseCase;
 }
@@ -16,22 +19,16 @@ const TodoList = ({ listAllTodosUseCase }: ITodoListProps) => {
     })();
   }, [listAllTodosUseCase]);
 
-  const handleFormSubmit = useCallback(() => { 
-
-
-  },[])
+  const handleFormSubmit = useCallback(() => {}, []);
 
   return (
     <>
       <Layout>
         <form onSubmit={handleFormSubmit}>
-          <label htmlFor="">Titulo</label>
-          <input type="text" name="title" />
-          <label htmlFor="">Titulo</label>
-          <input type="color" name="backgroundColor" />
-          <label htmlFor="body">Conteúdo</label>
-          <textarea name="body" />
-          <button>Criar</button>
+          <Input type="text" name="title" formLabel="Titulo" />
+          <Input type="color" name="backgroundColor" formLabel="Cor" />
+          <Input name="body" formLabel="Texto" style={{ height: "10rem" }} />
+          <Button>Criar</Button>
         </form>
 
         <div className={styles["todo-list"]}>

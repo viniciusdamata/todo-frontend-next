@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { SidebarContext } from "../../../context/sidebar";
-import styles from "./appBar.module.scss";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
+import { SidebarContext } from "@/presentation/context/sidebar";
+import styles from "./appBar.module.scss";
 
 const Appbar = () => {
   const { toggleSidebar } = useContext(SidebarContext);

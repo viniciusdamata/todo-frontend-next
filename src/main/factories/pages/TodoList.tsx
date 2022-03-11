@@ -1,4 +1,4 @@
-import TodoList from "../../../components/TodosPage/TodoList"
+import TodoList from "@/presentation/pages/TodosPage/TodoList"
 import { listAllTodosUseCaseFactory } from "../useCases/ListAllTodosUseCase"
 
 export const TodoListFactory = () => {
