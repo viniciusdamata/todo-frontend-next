@@ -5,13 +5,13 @@
   max-height: 20rem;
 
   & > span > p {
-    height: 10rem;
     text-overflow: clip;
     overflow: hidden;
   }
   flex-shrink: 1;
   flex-grow: 1;
-  flex-basis: calc(calc(600px - 100%) * 999);
+  flex-basis: 500px;
+  flex-wrap: wrap;
 
   &-actions {
     display: flex;

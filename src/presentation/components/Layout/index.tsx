@@ -8,8 +8,10 @@ const Layout = ({ children }: PropsWithChildren<ILayoutProps>) => {
   return (
     <>
       <SidebarContextProvider>
-        <Appbar />
-        <Sidebar>{children}</Sidebar>
+        <>
+          <Appbar />
+          <Sidebar>{children}</Sidebar>
+        </>
       </SidebarContextProvider>
     </>
   );

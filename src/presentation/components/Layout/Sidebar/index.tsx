@@ -27,24 +27,22 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
 
   return (
     <>
-      <aside
+      <nav
         className={clsx(styles["sidebar"], { [styles["sidebar-open"]]: open })}
       >
         <div
-          style={{
-            marginTop: "6rem",
-          }}
+         className={styles['sidebar-content']}
         >
           {menus.map(({ name, link, Icon }) => (
             <Link href={link} passHref key={name}>
-              <span style={{ display: "flex", fontWeight: 500 }}>
-                <p style={{ color: "#fff" }}>{name}</p>
+              <span className={styles['sidebar-content-item']}>
+                <p>{name}</p>
                 <Icon />
               </span>
             </Link>
           ))}
         </div>
-      </aside>
+      </nav>
       <main
         className={clsx(styles["main-content"], {
           [styles["main-content-sidebar-open"]]: open,

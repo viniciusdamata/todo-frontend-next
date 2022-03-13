@@ -12,7 +12,6 @@ export const SidebarContext = createContext<SidebarContextProps>({
 
 export const SidebarContextProvider = ({ children }: PropsWithChildren<{}>) => {
   const [open, setOpen] = useState<boolean>(false);
-  console.log("SidebarContext->open", open);
 
   const toggleSidebar = () => {
     setOpen((old) => !old);

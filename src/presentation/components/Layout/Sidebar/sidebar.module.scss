@@ -8,13 +8,26 @@
     transform: translateX(-80vw);
     z-index: 1;
   }
-  height: 100vh;
-  position: absolute;
+  height: 100%;
+  position: fixed;
   &-open {
     transform: translateX(0vw);
   }
 
   transition: transform 200ms ease-in;
+  padding: 1rem;
+  &-content {
+    margin-top: 6rem;
+    &-item {
+      display: flex;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      & > p {
+        margin-right: 1rem;
+      }
+    }
+  }
 }
 
 .main-content {

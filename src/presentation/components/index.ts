@@ -1,1 +1,1 @@
-export * from "../pages/TodosPage/TodoCard"
+export * from "../pages/TodosPage/components/TodoCard"

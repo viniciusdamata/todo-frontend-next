@@ -1,4 +1,4 @@
-import { HTTPGet } from "@/data/protocols/httpGetClient";
+import { HTTPGet } from "@/data";
 import axios from "axios";
 export class AxiosHttpGetClient implements HTTPGet.Client {
   constructor(private url: string) {}
@@ -9,6 +9,6 @@ export class AxiosHttpGetClient implements HTTPGet.Client {
       params: params?.query,
     });
 
-    return response.data.body;
+    return response.data;
   }
 }

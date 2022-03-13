@@ -8,7 +8,7 @@ import tinyColor from "tinycolor2";
 import styles from "./todoCard.module.scss";
 import { Todo } from "@/domain/entities/todo";
 
-export const TodoCard = ({ archived, backgroundColor, body, title }: Todo) => {
+export const TodoCard = ({ backgroundColor, body, title }: Todo) => {
   const textColor = useMemo(
     () => (tinyColor(backgroundColor).isDark() ? "#fff" : "#000"),
     [backgroundColor]
