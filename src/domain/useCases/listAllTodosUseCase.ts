@@ -5,8 +5,10 @@ export namespace ListAllTodosUseCase {
     error: string;
     body: Todo[];
     statusCode: 200;
-  }
+  };
+
+  export type Params = { archived: boolean };
 }
 
 export interface ListAllTodosUseCase
-  extends UseCase<{}, ListAllTodosUseCase.Response> {}
+  extends UseCase<ListAllTodosUseCase.Params, ListAllTodosUseCase.Response> {}

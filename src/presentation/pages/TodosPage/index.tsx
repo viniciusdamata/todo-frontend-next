@@ -1,39 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { ListAllTodosUseCase, SaveTodoUseCase, Todo } from "@/domain";
-import Layout from "@/presentation/components/Layout";
-import { TodoCard } from "./components/TodoCard";
-import styles from "./todosPage.module.scss";
-import TodoForm from "./components/TodoForm";
+import { ListAllTodosUseCase, RemoveTodoByIdUseCase, SaveTodoUseCase } from "@/domain";
+import { TodoForm, TodosList, Layout } from "@/presentation";
 
 interface ITodosPageProps {
   listAllTodosUseCase: ListAllTodosUseCase;
   saveTodoUseCase: SaveTodoUseCase;
+  removeTodoByIdUseCase: RemoveTodoByIdUseCase;
 }
-const TodosPage = ({
+export const TodosPage = ({
   listAllTodosUseCase,
   saveTodoUseCase,
+  removeTodoByIdUseCase,
 }: ITodosPageProps) => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const { body } = await listAllTodosUseCase.execute();
-      setTodos(body);
-    })();
-  }, [listAllTodosUseCase]);
-
   return (
     <>
       <Layout>
         <TodoForm saveTodoUseCase={saveTodoUseCase} />
-        <div className={styles["todo-list"]}>
-          {todos.map((todo) => (
-            <TodoCard {...todo} key={todo.title} />
-          ))}
-        </div>
+        <TodosList
+          saveTodoUseCase={saveTodoUseCase}
+          listAllTodosUseCase={listAllTodosUseCase}
+          removeTodoByIdUseCase={removeTodoByIdUseCase}
+          archived={false}
+        />
       </Layout>
     </>
   );
 };
-
-export default TodosPage;

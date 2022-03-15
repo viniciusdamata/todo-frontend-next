@@ -5,6 +5,6 @@ export namespace HTTPDelete {
   }
 
   export interface Client {
-    delete<T, R>(params?: Params): Promise<R>;
+    delete<R>(url: string, params?: Params): Promise<R>;
   }
 }

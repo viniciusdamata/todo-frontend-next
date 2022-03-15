@@ -1,0 +1,21 @@
+.todo-form {
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    width: 100%;
+  }
+  &-root {
+    flex-basis: 600px;
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+  }
+
+  &-controls {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

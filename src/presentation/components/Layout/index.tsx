@@ -3,8 +3,7 @@ import { SidebarContextProvider } from "@/presentation/context/sidebar";
 import Appbar from "./Appbar";
 import Sidebar from "./Sidebar";
 
-interface ILayoutProps {}
-const Layout = ({ children }: PropsWithChildren<ILayoutProps>) => {
+export const Layout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <>
       <SidebarContextProvider>
@@ -16,4 +15,3 @@ const Layout = ({ children }: PropsWithChildren<ILayoutProps>) => {
     </>
   );
 };
-export default Layout;

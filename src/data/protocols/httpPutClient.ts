@@ -6,7 +6,7 @@ export namespace HTTPPut {
     }
   
     export interface Client {
-      put<T, R>(params?: Params<T>): Promise<R>;
+      put<T, R>(url:string, params?: Params<T>): Promise<R>;
     }
   }
   

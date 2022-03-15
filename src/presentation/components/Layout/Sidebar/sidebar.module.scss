@@ -20,12 +20,10 @@
     margin-top: 6rem;
     &-item {
       display: flex;
-      font-weight: 600;
+      font-weight: 500;
       color: #fff;
       cursor: pointer;
-      & > p {
-        margin-right: 1rem;
-      }
+      justify-content: space-between;
     }
   }
 }
@@ -38,9 +36,6 @@
   &-sidebar-open {
     transform: translateX(22%);
     width: 80vw;
-    @media (max-width: 800px) {
-      transform: translateX(0vw);
-    }
   }
   transition: transform 200ms ease-in;
   padding: 0 1rem;

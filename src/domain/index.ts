@@ -1,3 +1,5 @@
 export * from "./entities/todo"
 export * from "./useCases/listAllTodosUseCase"
 export * from "./useCases/saveTodoUseCase"
+export * from "./useCases/findTodoByIdUseCase"
+export * from "./useCases/removeTodoByIdUseCase"

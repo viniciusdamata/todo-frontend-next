@@ -6,6 +6,6 @@ export namespace HTTPPost {
   }
 
   export interface Client {
-    post<T, R>(params?: Params<T>): Promise<R>;
+    post<T, R>(url:string, params?: Params<T>): Promise<R>;
   }
 }

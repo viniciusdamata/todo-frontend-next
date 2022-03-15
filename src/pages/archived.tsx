@@ -1,6 +1,9 @@
-import React from "react";
-interface IArchivedProps {}
-const Archived = (props: IArchivedProps) => {
-  return <></>;
+import { ArchivedTodosPageFactory } from "@/main/factories/pages/ArchivedTodosPage";
+const Archived = () => {
+  return (
+    <>
+      <ArchivedTodosPageFactory />
+    </>
+  );
 };
 export default Archived;

@@ -8,7 +8,7 @@ export namespace SaveTodoUseCase {
     statusCode: 200;
   };
 
-  export type Params = Todo;
+  export type Params = Partial<Todo>;
 }
 
 export interface SaveTodoUseCase

@@ -4,8 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { Input } from "@/presentation/components/Input/Input";
-import { useCallback } from "react";
 import { SaveTodoUseCase, Todo } from "@/domain";
+import styles from "./todoForm.module.scss";
+
 interface ITodoFormProps {
   saveTodoUseCase: SaveTodoUseCase;
 }
@@ -18,7 +19,7 @@ const todoValidationSchema = new Yup.ObjectSchema({
   userId: Yup.string(),
 });
 
-const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
+export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
   const form = useFormik<Todo>({
     initialValues: {
       title: "",
@@ -38,25 +39,8 @@ const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: "2rem",
-          flexGrow: 1,
-          width: "100%",
-        }}
-      >
-        <Form
-          onSubmit={form.handleSubmit}
-          style={{
-            flexBasis: "600px",
-            padding: "1rem",
-            border: "1px solid #ced4da",
-            borderRadius: ".5rem",
-          }}
-        >
+      <div className={styles["todo-form-container"]}>
+        <Form onSubmit={form.handleSubmit} className={styles["todo-form-root"]}>
           <Input
             type="text"
             name="title"
@@ -85,7 +69,7 @@ const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
             error={!!form.errors.body}
             errorMessage={form.errors.body}
           />
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div className={styles["todo-form-controls"]}>
             <Button disabled={form.isSubmitting} type="submit">
               Criar
             </Button>
@@ -95,4 +79,3 @@ const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
     </>
   );
 };
-export default TodoForm;

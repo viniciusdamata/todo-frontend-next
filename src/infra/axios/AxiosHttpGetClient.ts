@@ -1,10 +1,8 @@
 import { HTTPGet } from "@/data";
 import axios from "axios";
 export class AxiosHttpGetClient implements HTTPGet.Client {
-  constructor(private url: string) {}
-
-  public async get<R>(params?: HTTPGet.Params): Promise<R> {
-    const response = await axios.get(this.url, {
+  public async get<R>(url: string, params?: HTTPGet.Params): Promise<R> {
+    const response = await axios.get(url, {
       headers: params?.headers,
       params: params?.query,
     });

@@ -1,34 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { ListAllTodosUseCase, Todo } from "@/domain";
-import Layout from "@/presentation/components/Layout";
-import { TodoCard } from "@/presentation/pages/TodosPage/components/TodoCard";
+import { ListAllTodosUseCase, RemoveTodoByIdUseCase, SaveTodoUseCase, Todo } from "@/domain";
+import { TodosList, Layout } from "@/presentation";
 
 interface ITArchivedTodosPageProps {
   listAllTodosUseCase: ListAllTodosUseCase;
+  saveTodoUseCase: SaveTodoUseCase;
+  removeTodoByIdUseCase: RemoveTodoByIdUseCase;
 }
-const TArchivedTodosPage = ({
+export const ArchivedTodosPage = ({
   listAllTodosUseCase,
+  saveTodoUseCase,
+  removeTodoByIdUseCase,
 }: ITArchivedTodosPageProps) => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const { body } = await listAllTodosUseCase.execute();
-      setTodos(body);
-    })();
-  }, [listAllTodosUseCase]);
-
   return (
     <>
       <Layout>
-        <div className={styles["todo-list"]}>
-          {todos.map((todo) => (
-            <TodoCard {...todo} key={todo.title} />
-          ))}
-        </div>
+        <TodosList
+          saveTodoUseCase={saveTodoUseCase}
+          listAllTodosUseCase={listAllTodosUseCase}
+          archived={true}
+          removeTodoByIdUseCase={removeTodoByIdUseCase}
+        />
       </Layout>
     </>
   );
 };
-
-export default TArchivedTodosPage;
