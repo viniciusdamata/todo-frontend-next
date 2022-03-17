@@ -1,6 +1,10 @@
-import React from "react";
-interface IViewTodoPageProps {}
-const ViewTodoPage = (props: IViewTodoPageProps) => {
-  return <></>;
+import { ViewTodoPageFactory } from "@/main/factories/pages/ViewTodoPage";
+
+const ViewTodoPage = () => {
+  return (
+    <>
+      <ViewTodoPageFactory />
+    </>
+  );
 };
 export default ViewTodoPage;

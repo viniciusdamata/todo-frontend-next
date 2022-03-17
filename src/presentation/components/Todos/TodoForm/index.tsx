@@ -29,11 +29,12 @@ export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
       userId: "13768526-c06b-4c6c-99fc-b48ed2e300af",
     },
     validationSchema: todoValidationSchema,
-    onSubmit: (todo: Todo) => {
-      saveTodoUseCase
-        .execute(todo)
-        .then((response) => console.log(response))
-        .catch((error) => console.error(error));
+    onSubmit: async (todo: Todo) => {
+      try {
+        await saveTodoUseCase.execute(todo);
+      } catch (error) {
+        console.error(error);
+      }
     },
   });
 

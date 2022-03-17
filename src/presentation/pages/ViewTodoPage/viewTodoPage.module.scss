@@ -1,0 +1,21 @@
+.view-todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-card {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    flex-basis: 80%;
+
+    @media (max-width: 800px) {
+      flex-basis: 100%;
+    }
+    
+    &-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+}
