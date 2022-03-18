@@ -1,3 +1,4 @@
-import { AxiosHttpPostClient } from "@/infra";
+import { AxiosHttpPostClient, axiosInstance } from "@/infra";
 
-export const AxiosHttpPostClientFactory = () => new AxiosHttpPostClient();
+export const AxiosHttpPostClientFactory = () =>
+  new AxiosHttpPostClient(axiosInstance);

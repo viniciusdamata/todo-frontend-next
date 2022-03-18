@@ -1,10 +1,19 @@
 import clsx from "clsx";
-import React, { PropsWithChildren, useContext, useMemo } from "react";
+import React, {
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useMemo,
+} from "react";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import Link from "next/link";
 import { SidebarContext } from "@/presentation/context/sidebar";
 import styles from "./sidebar.module.scss";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
+import { signOut } from "next-auth/react";
+import { IconButton } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { Button } from "react-bootstrap";
 
 const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   const { open } = useContext(SidebarContext);
@@ -31,6 +40,13 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
     []
   );
 
+  const handleSignOut = useCallback(async () => {
+    await signOut({
+      redirect: true,
+      callbackUrl: "http://localhost:3000/login",
+    });
+  }, []);
+
   return (
     <>
       <nav
@@ -45,6 +61,18 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
               </span>
             </Link>
           ))}
+        </div>
+        <div className={styles["sidebar-user"]}>
+          <span>
+            <Button
+              onClick={handleSignOut}
+              style={{ display: "flex" }}
+              variant="link"
+            >
+              <p style={{ color: "#fff" }}>Sair</p>
+              <LogoutIcon style={{ color: "#fff" }} />
+            </Button>
+          </span>
         </div>
       </nav>
       <main

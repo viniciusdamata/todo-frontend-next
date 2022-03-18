@@ -31,7 +31,7 @@ export const TodosList = ({
 
   const handleArchive = useCallback(
     async (todo: Todo) => {
-      await saveTodoUseCase.execute({ ...todo, archived: true });
+      await saveTodoUseCase.execute({ ...todo, archived: !archived });
       setTodos((oldTodos) =>
         oldTodos.filter((item) => item.title !== todo.title)
       );

@@ -1,3 +1,4 @@
-import { AxiosHttpDeleteClient } from "@/infra";
+import { AxiosHttpDeleteClient, axiosInstance } from "@/infra";
 
-export const AxiosHttpDeleteClientFactory = () => new AxiosHttpDeleteClient();
+export const AxiosHttpDeleteClientFactory = () =>
+  new AxiosHttpDeleteClient(axiosInstance);
