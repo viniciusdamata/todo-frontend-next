@@ -10,13 +10,14 @@ import Link from "next/link";
 import { SidebarContext } from "@/presentation/context/sidebar";
 import styles from "./sidebar.module.scss";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
-import { signOut } from "next-auth/react";
-import { IconButton } from "@mui/material";
+import { signOut, useSession } from "next-auth/react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Button } from "react-bootstrap";
 
 const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   const { open } = useContext(SidebarContext);
+
+  const { data } = useSession();
 
   interface IMenu {
     name: string;
@@ -63,16 +64,17 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
           ))}
         </div>
         <div className={styles["sidebar-user"]}>
-          <span>
-            <Button
-              onClick={handleSignOut}
-              style={{ display: "flex" }}
-              variant="link"
-            >
-              <p style={{ color: "#fff" }}>Sair</p>
-              <LogoutIcon style={{ color: "#fff" }} />
-            </Button>
-          </span>
+          <p className={styles["sidebar-user-username"]}>
+            Logado como {data?.user?.email}
+          </p>
+          <Button
+            onClick={handleSignOut}
+            className={styles["sidebar-user-logout-button"]}
+            variant="link"
+          >
+            <p>Sair</p>
+            <LogoutIcon style={{ color: "#fff" }} />
+          </Button>
         </div>
       </nav>
       <main

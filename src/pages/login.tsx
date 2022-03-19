@@ -1,23 +1,9 @@
+import { LoginPageFactory } from "@/main/factories/pages/LoginPage";
 import { GetServerSideProps, NextPage } from "next";
 import { getToken } from "next-auth/jwt";
-import { signIn, signOut } from "next-auth/react";
 
 const Login: NextPage = () => {
-  return (
-    <div>
-      {/* Access Token: {data?.user} */}
-      <button
-        onClick={() =>
-          signIn("cognito", {
-            callbackUrl: "http://localhost:3000",
-            redirect: true,
-          })
-        }
-      >
-        Login
-      </button>
-    </div>
-  );
+  return <LoginPageFactory />;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

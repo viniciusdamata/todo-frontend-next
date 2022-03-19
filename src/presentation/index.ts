@@ -6,5 +6,5 @@ export * from "./components/Todos/TodosList";
 export * from "./pages/ArchivedTodosPage"
 export * from "./pages/TodosPage"
 export * from "./pages/ViewTodoPage"
-
+export * from "./pages/LoginPage"
 

@@ -3,6 +3,7 @@ import { getSession } from "next-auth/react";
 
 const tokenInterceptor = async (config: AxiosRequestConfig<any>) => {
   const session = await getSession();
+  console.log(session);
   return {
     ...config,
     headers: { Authorization: `Bearer ${session?.idToken}` },
@@ -10,6 +11,7 @@ const tokenInterceptor = async (config: AxiosRequestConfig<any>) => {
 };
 
 const errorInterceptor = (error: any) => {
+  console.log(error);
   Promise.reject(error);
 };
 

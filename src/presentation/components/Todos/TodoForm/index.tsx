@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Input } from "@/presentation/components/Input/Input";
 import { SaveTodoUseCase, Todo } from "@/domain";
 import styles from "./todoForm.module.scss";
+import { useSession } from "next-auth/react";
 
 interface ITodoFormProps {
   saveTodoUseCase: SaveTodoUseCase;
@@ -19,19 +20,23 @@ const todoValidationSchema = new Yup.ObjectSchema({
   userId: Yup.string(),
 });
 
+
+
 export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
+  const { data } = useSession();
   const form = useFormik<Todo>({
     initialValues: {
       title: "",
       body: "",
       archived: false,
       backgroundColor: "",
-      userId: "13768526-c06b-4c6c-99fc-b48ed2e300af",
+      userId: (data?.user as any)?.id,
     },
     validationSchema: todoValidationSchema,
     onSubmit: async (todo: Todo) => {
       try {
         await saveTodoUseCase.execute(todo);
+        form.resetForm()
       } catch (error) {
         console.error(error);
       }
@@ -47,6 +52,7 @@ export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
             name="title"
             formLabel="Titulo"
             placeholder="Titulo da nota"
+            value={form.values.title}
             onChange={form.handleChange}
             error={!!form.errors.title}
             errorMessage={form.errors.title}
@@ -56,6 +62,7 @@ export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
             name="backgroundColor"
             formLabel="Cor"
             placeholder="Cor da nota"
+            value={form.values.backgroundColor}
             onChange={form.handleChange}
             error={!!form.errors.backgroundColor}
             errorMessage={form.errors.backgroundColor}
@@ -66,6 +73,7 @@ export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
             formLabel="Texto"
             style={{ height: "10rem" }}
             placeholder="Texto da nota"
+            value={form.values.body}
             onChange={form.handleChange}
             error={!!form.errors.body}
             errorMessage={form.errors.body}
