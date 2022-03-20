@@ -25,6 +25,7 @@ export const TodosList = ({
   useEffect(() => {
     (async () => {
       const { body } = await listAllTodosUseCase.execute({ archived });
+      console.log(body)
       setTodos(body);
     })();
   }, [archived, listAllTodosUseCase]);
@@ -36,7 +37,7 @@ export const TodosList = ({
         oldTodos.filter((item) => item.title !== todo.title)
       );
     },
-    [saveTodoUseCase]
+    [archived, saveTodoUseCase]
   );
 
   const handleDelete = useCallback(
@@ -50,7 +51,7 @@ export const TodosList = ({
   return (
     <>
       <div className={styles["todo-list"]}>
-        {todos.map((todo) => (
+        {todos?.map((todo) => (
           <TodoCard
             todo={todo}
             key={todo.title}
