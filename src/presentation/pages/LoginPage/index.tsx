@@ -13,7 +13,7 @@ export const LoginPage = () => {
 
   return (
     <div className={styles["login-page"]}>
-      <h1>TodoApp</h1>
+      <h1>Todo App</h1>
       <Button onClick={handleLogin}>Login</Button>
     </div>
   );

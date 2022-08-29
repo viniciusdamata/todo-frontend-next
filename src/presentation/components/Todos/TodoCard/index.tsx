@@ -6,6 +6,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import tinyColor from "tinycolor2";
 import styles from "./todoCard.module.scss";
 import { Todo } from "@/domain";
+import { IconButton } from "@mui/material";
+
 
 interface ITodoCardProps {
   todo: Todo;
@@ -46,8 +48,8 @@ export const TodoCard = memo(
         }}
         className={styles["todo-card"]}
       >
-        <h1>{todo.title}</h1>
         <span>
+        <h1>{todo.title}</h1>
           <p>
             {todo.body.length > 250
               ? todo.body.slice(0, 250) + "..."
@@ -55,16 +57,16 @@ export const TodoCard = memo(
           </p>
         </span>
         <span className={styles["todo-card-actions"]}>
-          <span onClick={onClickDelete}>
+          <IconButton onClick={onClickDelete}>
             <DeleteIcon style={{ color: textColor }} />
-          </span>
-          <span onClick={onClickArchive}>
+          </IconButton>
+          <IconButton onClick={onClickArchive}>
             <ArchiveIcon style={{ color: textColor }} />
-          </span>
+          </IconButton>
           <Link href={`/todos/${todo.title}`} passHref>
-            <span>
+            <IconButton>
               <VisibilityIcon style={{ color: textColor }} />
-            </span>
+            </IconButton>
           </Link>
         </span>
       </section>

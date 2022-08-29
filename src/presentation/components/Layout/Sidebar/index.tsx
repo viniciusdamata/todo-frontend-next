@@ -13,6 +13,7 @@ import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import { signOut, useSession } from "next-auth/react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Button } from "react-bootstrap";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   const { open } = useContext(SidebarContext);
@@ -49,24 +50,27 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
   }, []);
 
   return (
-    <>
+    <div style={{ overflow: "hidden" }}>
       <nav
         className={clsx(styles["sidebar"], { [styles["sidebar-open"]]: open })}
       >
         <div className={styles["sidebar-content"]}>
           {menus.map(({ name, link, Icon }) => (
             <Link href={link} passHref key={name}>
-              <span className={styles["sidebar-content-item"]}>
+              <div className={styles["sidebar-content-item"]}>
                 <p>{name}</p>
                 <Icon />
-              </span>
+              </div>
             </Link>
           ))}
         </div>
         <div className={styles["sidebar-user"]}>
-          <p className={styles["sidebar-user-username"]}>
-            Logado como {data?.user?.email}
-          </p>
+          <div className={styles["sidebar-user-username"]}>
+            <AccountCircleIcon style={{ color: "#fff" }} />
+            <p >
+              Logado como {data?.user?.email}
+            </p>
+          </div>
           <Button
             onClick={handleSignOut}
             className={styles["sidebar-user-logout-button"]}
@@ -84,7 +88,7 @@ const Sidebar = ({ children }: PropsWithChildren<{}>) => {
       >
         {children}
       </main>
-    </>
+    </div>
   );
 };
 export default Sidebar;

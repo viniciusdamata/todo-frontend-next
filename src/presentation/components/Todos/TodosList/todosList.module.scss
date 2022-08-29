@@ -1,5 +1,17 @@
 .todo-list {
-  display: flex;
+  display: grid;
   gap: 1rem;
-  flex-wrap: wrap;
+  max-width: 1600px;
+  margin: 0 auto;
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+   &-empty {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+   }
 }

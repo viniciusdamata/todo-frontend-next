@@ -20,8 +20,6 @@ const todoValidationSchema = new Yup.ObjectSchema({
   userId: Yup.string(),
 });
 
-
-
 export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
   const { data } = useSession();
   const form = useFormik<Todo>({
@@ -33,10 +31,12 @@ export const TodoForm = ({ saveTodoUseCase }: ITodoFormProps) => {
       userId: (data?.user as any)?.id,
     },
     validationSchema: todoValidationSchema,
+    validateOnBlur: false,
+    validateOnChange: false,
     onSubmit: async (todo: Todo) => {
       try {
         await saveTodoUseCase.execute(todo);
-        form.resetForm()
+        form.resetForm();
       } catch (error) {
         console.error(error);
       }

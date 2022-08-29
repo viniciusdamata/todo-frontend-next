@@ -11,7 +11,6 @@ interface RefreshTokenProps {
 }
 
 export const refreshAccessToken = async (token: RefreshTokenProps) => {
-  console.log({ token });
   try {
     const { refreshToken: refresh_token } = token;
 
@@ -23,7 +22,6 @@ export const refreshAccessToken = async (token: RefreshTokenProps) => {
     });
 
     const url = `${COGNITO_DOMAIN}/oauth2/token?${queryParams}`;
-    console.log(url);
 
     const headerString = `${COGNITO_CLIENT_ID}:${COGNITO_CLIENT_SECRET}`;
     const buff = Buffer.from(headerString, "utf-8");
@@ -42,7 +40,6 @@ export const refreshAccessToken = async (token: RefreshTokenProps) => {
     if (!response.ok) {
       throw refreshedTokens;
     }
-    console.log("refreshed");
     const res = {
       ...token,
       idToken: refreshedTokens.id_token,
@@ -51,7 +48,6 @@ export const refreshAccessToken = async (token: RefreshTokenProps) => {
     };
     return res;
   } catch (error) {
-    console.log(error);
     return {
       ...token,
       error: "RefreshAccessTokenError",

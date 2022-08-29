@@ -13,7 +13,7 @@ const Appbar = () => {
         <IconButton onClick={toggleSidebar}>
           <MenuIcon />
         </IconButton>
-        <h1>TodoApp</h1>
+        <h1 className={styles["app-bar-title"]}>Todo App</h1>
       </div>
     </>
   );

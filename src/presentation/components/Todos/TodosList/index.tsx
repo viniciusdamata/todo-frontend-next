@@ -4,7 +4,8 @@ import {
   SaveTodoUseCase,
   Todo,
 } from "@/domain";
-import { useCallback, useEffect, useState } from "react";
+import autoAnimate from "@formkit/auto-animate";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { TodoCard } from "../TodoCard";
 import styles from "./todosList.module.scss";
 
@@ -21,12 +22,18 @@ export const TodosList = ({
   archived,
 }: ITodosListProps) => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const parent = useRef(null);
+
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
 
   useEffect(() => {
     (async () => {
       const { body } = await listAllTodosUseCase.execute({ archived });
-      console.log(body)
       setTodos(body);
+      setLoading(false);
     })();
   }, [archived, listAllTodosUseCase]);
 
@@ -48,9 +55,21 @@ export const TodosList = ({
     [removeTodoByIdUseCase]
   );
 
+  if (loading) {
+    return <div className={styles["todo-list-empty"]} ref={parent}>Carregando...</div>;
+  }
+
+  if (todos?.length === 0) {
+    return (
+      <div className={styles["todo-list-empty"]} ref={parent}>
+        <h1>Nenhuma Nota Disponivel</h1>
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className={styles["todo-list"]}>
+      <div className={styles["todo-list"]} ref={parent}>
         {todos?.map((todo) => (
           <TodoCard
             todo={todo}

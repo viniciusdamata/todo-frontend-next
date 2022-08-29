@@ -32,7 +32,7 @@ export const ViewTodo = ({
         : tinycolor(todo?.backgroundColor).isDark()
         ? "#fff"
         : "#000",
-    [todo?.backgroundColor]
+    [todo?.archived, todo?.backgroundColor]
   );
 
   const backgroundColor = useMemo(
@@ -43,13 +43,12 @@ export const ViewTodo = ({
   useEffect(() => {
     const findTodo = async () => {
       const todoId = String(router.query.id);
-      console.log(todoId);
       if (!todoId) return;
       const { body } = await findTodoByIdUseCase.execute({ id: todoId });
       setTodo(body);
     };
     findTodo();
-  }, [router.query]);
+  }, [findTodoByIdUseCase, router.query]);
 
   const handleDelete = useCallback(async () => {
     await removeTodoByIdUseCase.execute({
